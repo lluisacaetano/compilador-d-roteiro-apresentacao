@@ -1,4 +1,4 @@
-# Roteiro da apresentação: analisador léxico e sintático da linguagem D
+a# Roteiro da apresentação: analisador léxico e sintático da linguagem D
 
 Ordem: visão geral → léxico → sintático → demonstração → perguntas.
 As falas estão entre aspas. O que está em **Mostrar** é o que abrir na tela.
@@ -62,12 +62,12 @@ As falas estão entre aspas. O que está em **Mostrar** é o que abrir na tela.
 | 5, 6, 7, 8 | `<` `<=`, `>` `>=`, `=` `==`, `!=` |
 | 9, 10 | `+` `++`, `-` `--` |
 
-> "Quando encontra um erro léxico, o léxico informa linha e coluna e continua. Assim, uma única
-> execução mostra todos os erros do arquivo."
+> "Quando encontra um erro léxico, o programa imprime o token de erro, com linha e coluna, e
+> para. O sintático faz o mesmo: para no primeiro erro."
 
 ### `main.py` (léxico)
-> "O `main` abre o arquivo, cria o léxico e pede um token por vez até o `<eof>`, imprimindo
-> cada um."
+> "O `main` abre o arquivo, cria o léxico e pede um token por vez, imprimindo cada um, até
+> chegar ao `<eof>` ou ao primeiro erro."
 
 ---
 
@@ -192,8 +192,8 @@ python3 main.py testes/erros.d
 
 - **`exemplo.d`:** imprime todos os tokens. A primeira linha é
   `(tk=int lex="int" lin=4 col=1)` e a última é `(tk=<eof> lex="<eof>" lin=53 col=0)`.
-- **`erros.d`:** mostra os erros e continua até o fim. Procure, por exemplo,
-  `(tk=erro lex="12abc" lin=3 col=9)` e `(tk=erro lex="@" lin=8 col=9)`.
+- **`erros.d`:** imprime os tokens até o primeiro erro e para. A última linha é
+  `(tk=erro lex="12abc" lin=3 col=9)`.
 
 ### Trabalho 2: sintático
 ```
